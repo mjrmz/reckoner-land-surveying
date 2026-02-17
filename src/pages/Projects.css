@@ -1,0 +1,261 @@
+.projects-section {
+  padding: 120px 20px;
+  background: #f9f9f9;
+  color: #333;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* EARTH-TONE BLOBS */
+.projects-section::before,
+.projects-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.projects-section::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, #f4a261, #e76f51);
+  top: -200px;
+  left: -200px;
+}
+
+.projects-section::after {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle at center, #2a9d8f, #264653);
+  bottom: -250px;
+  right: -250px;
+}
+
+.projects-header {
+  position: relative;
+  z-index: 1;
+}
+
+.projects-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #0a4c80, #13c270);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-sub {
+  font-size: 1.15rem;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  color: #555;
+  position: relative;
+  z-index: 1;
+  line-height: 1.5;
+}
+
+/* SLIDER */
+.slider-container {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.7s ease-in-out;
+}
+
+/* Individual Slide */
+.slide {
+  min-width: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide Card */
+.slide-content {
+  background: #fff;
+  display: flex;
+  gap: 25px;
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  border-left: 8px solid #13c270;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.slide-content:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Image inside card */
+.slide-content img {
+  width: 350px;
+  height: 230px;
+  border-radius: 20px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.slide-content img:hover {
+  transform: scale(1.05);
+}
+
+/* Card Text */
+.slide-text {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slide-content h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0a4c80;
+}
+
+.slide-type {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #13c270;
+}
+
+.slide-desc {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.slide-location {
+  font-weight: 600;
+  color: #333;
+  opacity: 0.9;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: #0a4c80;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+  z-index: 2;
+}
+
+.nav-btn:hover {
+  background: #13c270;
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.left {
+  left: 15px;
+}
+
+.right {
+  right: 15px;
+}
+
+/* DOTS */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  background: #0a4c80;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: #13c270;
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .slide-content {
+    flex-direction: column;
+    width: 90%;
+    padding: 25px;
+  }
+
+  .slide-content img {
+    width: 100%;
+    height: 220px;
+  }
+
+  .projects-title {
+    font-size: 2.5rem;
+  }
+
+  .slide-content h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 90px 15px;
+  }
+
+  .projects-title {
+    font-size: 2rem;
+  }
+
+  .slide-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .slide-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .nav-btn {
+    font-size: 2rem;
+    padding: 8px 12px;
+  }
+}

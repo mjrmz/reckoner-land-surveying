@@ -1,0 +1,150 @@
+/* ==============================
+   FULL-SCREEN HERO - CLEAN & VIBRANT
+   ============================== */
+
+.home-section {
+  height: 100vh;
+  width: 100vw; /* ensure full width */
+  overflow: hidden; /* prevent horizontal scroll */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(
+      rgba(10, 76, 128, 0.6),
+      rgba(19, 194, 112, 0.4)
+    ),
+    url('../assets/images/reckonerhome.png') center/cover no-repeat; /* full screen background image */
+  box-sizing: border-box;
+}
+
+/* Overlay content wrapper */
+.home-overlay {
+  width: 100%;
+  max-width: 1400px; /* optional max width for desktops */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* TEXT AREA */
+.home-text {
+  flex: 1;
+  color: white;
+  text-align: left;
+  z-index: 2;
+}
+
+.home-text h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+.home-text h1 span {
+  color: #13C270; /* green accent */
+}
+
+.home-text p {
+  font-size: 1.2rem;
+  max-width: 550px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.home-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: rgba(19, 194, 112, 0.95);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.home-btn:hover {
+  background: rgba(10, 76, 128, 0.95);
+  transform: scale(1.05);
+}
+
+/* IMAGE AREA */
+.home-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.home-image img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.home-image img:hover {
+  transform: scale(1.03);
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
+@media (max-width: 1024px) {
+  .home-overlay {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  .home-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-text p {
+    font-size: 1.05rem;
+  }
+
+  .home-image img {
+    max-width: 80%;
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-section {
+    height: 100vh;
+    padding: 0 20px;
+  }
+
+  .home-text h1 {
+    font-size: 2rem;
+  }
+
+  .home-text p {
+    font-size: 0.95rem;
+  }
+
+  .home-btn {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+
+  .home-image img {
+    max-width: 100%;
+    max-height: 50vh;
+  }
+}
