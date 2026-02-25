@@ -1,45 +1,49 @@
 /* ==============================
-   FULL-SCREEN HERO - CLEAN & VIBRANT
+   FULL-SCREEN HERO WITH VIDEO
    ============================== */
 
 .home-section {
-  height: 100vh;
-  width: 100vw; /* ensure full width */
-  overflow: hidden; /* prevent horizontal scroll */
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  background: linear-gradient(
-      rgba(10, 76, 128, 0.6),
-      rgba(19, 194, 112, 0.4)
-    ),
-    url('../assets/images/reckonerhome.png') center/cover no-repeat; /* full screen background image */
-  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Overlay content wrapper */
+.home-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Overlay wrapper - controls padding and text alignment */
 .home-overlay {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 1400px; /* optional max width for desktops */
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
-  height: 100%;
-  box-sizing: border-box;
+  justify-content: flex-start;
+
+  /* =============================
+     DESKTOP: adjustable padding
+     ============================= */
+  padding: 0 200px; /* customize this width for desktop */
 }
 
-/* TEXT AREA */
+/* Text content */
 .home-text {
-  flex: 1;
+  max-width: 900px; /* Optional: limit text width */
   color: white;
-  text-align: left;
   z-index: 2;
 }
 
 .home-text h1 {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 20px;
@@ -51,13 +55,13 @@
 }
 
 .home-text p {
-  font-size: 1.2rem;
-  max-width: 550px;
+  font-size: 1.5rem;
   margin-bottom: 30px;
   line-height: 1.6;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Button */
 .home-btn {
   display: inline-block;
   padding: 14px 40px;
@@ -68,34 +72,12 @@
   border-radius: 12px;
   text-decoration: none;
   transition: 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .home-btn:hover {
   background: rgba(10, 76, 128, 0.95);
   transform: scale(1.05);
-}
-
-/* IMAGE AREA */
-.home-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.home-image img {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.home-image img:hover {
-  transform: scale(1.03);
 }
 
 /* ==============================
@@ -104,47 +86,44 @@
 
 @media (max-width: 1024px) {
   .home-overlay {
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 30px;
-    text-align: center;
+    padding: 0 50px; /* smaller padding on tablets */
+    justify-content: flex-start; /* keep left-aligned */
   }
 
   .home-text h1 {
     font-size: 2.5rem;
+    text-align: left; /* left align text */
   }
 
   .home-text p {
     font-size: 1.05rem;
-  }
-
-  .home-image img {
-    max-width: 80%;
-    max-height: 60vh;
+    text-align: left; /* left align text */
   }
 }
 
 @media (max-width: 600px) {
-  .home-section {
-    height: 100vh;
-    padding: 0 20px;
+  .home-overlay {
+    padding: 220px 20px 0 20px; /* top padding for navbar + left/right padding */
+    justify-content: flex-start; /* left-aligned */
+    align-items: flex-start;
+  }
+
+  .home-text {
+    max-width: calc(100% - 40px); /* full width minus left/right padding */
   }
 
   .home-text h1 {
     font-size: 2rem;
+    text-align: left; /* keep left-aligned */
   }
 
   .home-text p {
     font-size: 0.95rem;
+    text-align: left; /* left-aligned */
   }
 
   .home-btn {
     padding: 12px 30px;
     font-size: 0.95rem;
-  }
-
-  .home-image img {
-    max-width: 100%;
-    max-height: 50vh;
   }
 }

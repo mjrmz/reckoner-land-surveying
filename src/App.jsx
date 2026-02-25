@@ -8,7 +8,7 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <>
+    <div className="app-wrapper"> {/* <-- custom margin applied here */}
       <Navbar />
 
       <main>
@@ -19,7 +19,7 @@ function App() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

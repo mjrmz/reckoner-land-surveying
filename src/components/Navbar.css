@@ -1,22 +1,42 @@
 /* ============================
-   MODERN RECKONER NAVBAR
+   GLASSY NAVBAR WITH SCROLL EFFECT
    ============================ */
 
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 14px 24px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 20px 50px; /* default desktop padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 250px; /* default rounded pill */
+  border: 1px solid rgba(0, 0, 0, 0.05);
 
   z-index: 1000;
   box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* ============================
+   SCROLLED NAVBAR
+   ============================ */
+.navbar.scrolled {
+  top: 0;
+  left: 0;
+  transform: none;
+  width: 100%;
+  padding: 10px 20px; /* smaller padding on scroll */
+  border-radius: 0;   /* straight edges */
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* ============================
@@ -31,16 +51,18 @@
 }
 
 .logo img {
-  height: 42px;
+  height: 42px; /* default desktop logo */
   width: auto;
   object-fit: contain;
   user-select: none;
+  transition: height 0.3s ease;
 }
 
 .logo-text {
   font-size: 1.35rem;
   font-weight: 700;
   color: #0A4C80;
+  transition: font-size 0.3s ease;
 }
 
 /* ============================
@@ -56,7 +78,7 @@
 .nav-links a {
   text-decoration: none;
   font-weight: 600;
-  color: #2A2A2A;
+  color: #0A4C80;
   transition: 0.25s ease;
   position: relative;
   white-space: nowrap;
@@ -74,89 +96,80 @@
   transition: width 0.25s ease;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links a:hover {
-  color: #0A4C80;
-}
-
-/* Active link (optional) */
-.nav-links a.active {
-  color: #0A4C80;
-}
-
+.nav-links a:hover::after,
 .nav-links a.active::after {
   width: 100%;
 }
 
-/* ============================
-   MOBILE MENU ICON
-   ============================ */
-.mobile-menu-icon {
-  display: none;
-  font-size: 1.9rem;
+.nav-links a:hover,
+.nav-links a.active {
   color: #0A4C80;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-/* little scale effect on tap */
-.mobile-menu-icon:active {
-  transform: scale(0.9);
 }
 
 /* ============================
-   BREAKPOINT FIXES
+   MOBILE / TABLET VIEW
    ============================ */
-
-@media (max-width: 1200px) {
-  .nav-links {
-    gap: 18px;
-  }
-  .navbar {
-    padding: 14px 20px;
-  }
-}
-
-/* Tablet & below */
 @media (max-width: 900px) {
+
+  /* Navbar still pill-shaped by default */
+  .navbar {
+    width: 90%;
+    padding: 14px 25px;
+    border-radius: 200px;
+  }
+
+  /* Smaller logo and text for mobile */
+  .logo img {
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  /* Hide desktop nav links */
   .nav-links {
     display: none;
   }
+
+  /* Hamburger flush at right edge, white color */
   .mobile-menu-icon {
     display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.7rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.2s ease, right 0.3s ease;
   }
-}
 
-/* ============================
-   MOBILE DROPDOWN MENU
-   ============================ */
-@media (max-width: 900px) {
+  .mobile-menu-icon:active {
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  /* Mobile dropdown menu */
   .nav-links.open {
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 0;
     width: 100%;
-
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding: 25px 0 35px;
-    gap: 20px;
-
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
+    padding: 20px 0;
+    gap: 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     animation: dropdown 0.25s ease;
   }
 }
 
-/* smooth dropdown */
+/* ============================
+   DROPDOWN ANIMATION
+   ============================ */
 @keyframes dropdown {
   from {
     opacity: 0;
@@ -165,5 +178,24 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ============================
+   BREAKPOINT FIXES
+   ============================ */
+@media (max-width: 1200px) {
+  .nav-links {
+    gap: 18px;
+  }
+  .navbar {
+    padding: 14px 30px;
+  }
+}
+
+/* Desktop: hide hamburger */
+@media (min-width: 901px) {
+  .mobile-menu-icon {
+    display: none;
   }
 }

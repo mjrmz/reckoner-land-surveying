@@ -1,9 +1,15 @@
 import "./Home.css";
-import heroImg from "../assets/images/reckonerhome.png";
+import heroVideo from "../assets/videos/hero.mp4"; // Replace with your video path
 
 export default function Home() {
   return (
     <section id="home" className="home-section">
+      {/* Background Video */}
+      <video className="home-video" autoPlay loop muted playsInline>
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+
+      {/* Overlay for content (no tint) */}
       <div className="home-overlay">
         <div className="home-text">
           <h1>
@@ -15,12 +21,6 @@ export default function Home() {
           </p>
           <a href="#contact" className="home-btn">Get a Quote</a>
         </div>
-
-        {/* 🔥 REMOVED POP-UP IMAGE */}
-        {/* <div className="home-image">
-          <img src={heroImg} alt="Reckoner Land Surveying" />
-        </div> */}
-
       </div>
     </section>
   );
