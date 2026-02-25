@@ -3,6 +3,7 @@
    ============================ */
 
 .navbar {
+  font-family: "Play", sans-serif;
   position: fixed;
   top: 20px;
   left: 50%;
